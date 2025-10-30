@@ -1,49 +1,46 @@
 import os
-
+from aplicacion.departamento_app import crudDepartamento
+from aplicacion.empleado_app import crudEmpleado
+from aplicacion.proyecto_app import crudProyecto
 
 def menuPrincipal():
-    os.system('cls')  # Esta linea permite borrar la terminal
-    print("***************************************")
-    print("            Menu Principal")
-    print("***************************************")
-    print("      1. (C) Menú de departamentos")
-    print("      2. (R) Menú de proyectos")
-    print("      3. (U) Menú de empleados")
-    print("      4. (D) Salir del programa")
-    print("***************************************")
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("********** MENÚ PRINCIPAL **********")
+        print("1. Menú de Departamentos")
+        print("2. Menú de Proyectos")
+        print("3. Menú de Empleados")
+        print("4. Salir")
+        print("************************************")
+        opcion = input("Seleccione una opción: ")
 
+        if opcion == "1":
+            menuCRUD("Departamento", crudDepartamento)
+        elif opcion == "2":
+            menuCRUD("Proyecto", crudProyecto)
+        elif opcion == "3":
+            menuCRUD("Empleado", crudEmpleado)
+        elif opcion == "4":
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opción inválida. Intente nuevamente.")
 
-def mostrarMenus():
-    os.system('cls')
-    print("***************************************")
-    print("            Menú Mostrar")
-    print("***************************************")
-    print("      1. Agregar")
-    print("      2. Mostrar todos")
-    print("      3. Buscar por código")
-    print("      4. Buscar por nombre")
-    print("      5. Modificar")
-    print("      6. Eliminar")
-    print("      6. Volver al menú principal")
-    print("***************************************")
+def menuCRUD(entidad, crudFuncion):
+    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f"***** MENÚ {entidad.upper()} *****")
+        print("1. Agregar")
+        print("2. Mostrar todos")
+        print("3. Modificar")
+        print("4. Eliminar")
+        print("5. Volver al menú principal")
+        print("*****************************")
+        opcion = input("Seleccione una opción: ")
 
-
-def mostrarTodosEmpleados():
-    os.system('cls')  # Esta linea permite borrar la terminal
-    print("**************************************")
-    print("Mostrar todos los empleados ")
-    print("***************************************")
-
-
-def mostrarTodosDepartamentos():
-    os.system('cls')  # Esta linea permite borrar la terminal
-    print("***************************************")
-    print("            Mostrar todos los departamentos")
-    print("***************************************")
-
-
-def mostrarTodosproyectos():
-    os.system('cls')  # Esta linea permite borrar la terminal
-    print("***************************************")
-    print("            Mostrar todos los proyectos")
-    print("***************************************")
+        if opcion == "5":
+            break
+        elif opcion in ["1", "2", "3", "4"]:
+            crudFuncion(opcion)
+        else:
+            print("Opción inválida.")
