@@ -47,3 +47,7 @@ def mostrarTodosproyectos():
     print("***************************************")
     print("            Mostrar todos los proyectos")
     print("***************************************")
+
+
+def prueba():
+    pass
